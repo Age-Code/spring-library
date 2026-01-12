@@ -3,12 +3,10 @@ package spring.library.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.*;
+import spring.library.dto.MemberDto;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Entity
 public class Member {
 
@@ -17,9 +15,20 @@ public class Member {
     private Long id;
 
     private String name;
-    private Long memberId;
+    private Long idNumber;
     private String feature;
     private String email;
     private String phoneNumber;
 
+    protected Member() {}
+    private Member(String name, Long idNumber, String feature, String email, String phoneNumber) {
+        this.name = name;
+        this.idNumber = idNumber;
+        this.feature = feature;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+    public static Member of(String name, Long idNumber, String feature, String email, String phoneNumber) {
+        return new Member(name, idNumber, feature, email, phoneNumber);
+    }
 }
