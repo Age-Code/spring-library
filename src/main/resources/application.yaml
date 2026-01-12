@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        #dialect: org.hibernate.dialect.MySQLDialect
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring-library
+    username: root
+    password: age0504!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    show-sql: true
+    defer-datasource-initialization: true
