@@ -17,7 +17,7 @@ public class MemberRestController {
 
     // 생성
     @PostMapping
-    public MemberDto.CreateResDto createMember(@RequestBody MemberDto.CreateReqDto createReqDto) {
+    public MemberDto.CreateResDto create(@RequestBody MemberDto.CreateReqDto createReqDto) {
         return memberService.create(createReqDto);
     }
 
@@ -25,12 +25,6 @@ public class MemberRestController {
     @GetMapping
     public List<MemberDto.DetailResDto> findAll() {
         return memberService.findAll();
-    }
-
-    // 조회
-    @GetMapping("/{memberId}")
-    public MemberDto.DetailResDto findById(@PathVariable Long memberId) {
-        return memberService.findById(memberId);
     }
 
     // 수정
@@ -41,7 +35,7 @@ public class MemberRestController {
 
     // 삭제
     @DeleteMapping("/{memberId}")
-    public MemberDto.DeleteResDto deleteMember(@PathVariable Long memberId) {
+    public MemberDto.DeleteResDto delete(@PathVariable Long memberId) {
         return memberService.delete(memberId);
     }
 

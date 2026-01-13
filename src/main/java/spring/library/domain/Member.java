@@ -1,9 +1,10 @@
 package spring.library.domain;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.*;
-import spring.library.dto.MemberDto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +20,12 @@ public class Member {
     private String feature;
     private String email;
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "member")
+    private List<Checkout> checkoutList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Purchase> purchaseList = new ArrayList<>();
 
     // 생성자
     protected Member() {}

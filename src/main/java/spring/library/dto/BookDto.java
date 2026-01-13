@@ -2,6 +2,7 @@ package spring.library.dto;
 
 import lombok.*;
 import spring.library.domain.Book;
+import spring.library.domain.LibraryBook;
 
 public class BookDto {
 
@@ -11,13 +12,17 @@ public class BookDto {
         private String title;
         private String author;
         private String publisher;
-        private Long publicationYear;
+        private int publicationYear;
         private String classification;
         private String status;
-        private Long amount;
+        private int amount;
 
-        public Book toEntity() {
-            return Book.of(title, author, publisher, publicationYear, classification, status, amount);
+        public Book toBook() {
+            return Book.of(title, author, publisher, publicationYear);
+        }
+
+        public LibraryBook toLibraryBook(Book book) {
+            return LibraryBook.of(classification, status, amount, book);
         }
     }
 
@@ -33,20 +38,20 @@ public class BookDto {
         private String title;
         private String author;
         private String publisher;
-        private Long publicationYear;
+        private int publicationYear;
         private String classification;
         private String status;
-        private Long amount;
+        private int amount;
 
-        public static DetailResDto toDetailResDto(Book book) {
+        public static DetailResDto toDetailResDto(LibraryBook libraryBook) {
             return builder()
-                    .title(book.getTitle())
-                    .author(book.getAuthor())
-                    .publisher(book.getPublisher())
-                    .publicationYear(book.getPublicationYear())
-                    .classification(book.getClassification())
-                    .status(book.getStatus())
-                    .amount(book.getAmount())
+                    .title(libraryBook.getBook().getTitle())
+                    .author(libraryBook.getBook().getAuthor())
+                    .publisher(libraryBook.getBook().getPublisher())
+                    .publicationYear(libraryBook.getBook().getPublicationYear())
+                    .classification(libraryBook.getClassification())
+                    .status(libraryBook.getStatus())
+                    .amount(libraryBook.getAmount())
                     .build();
         }
     }
@@ -57,10 +62,10 @@ public class BookDto {
         String title;
         String author;
         String publisher;
-        Long publicationYear;
+        int publicationYear;
         String classification;
         String status;
-        Long amount;
+        int amount;
     }
 
     // Update Response DTO

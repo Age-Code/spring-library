@@ -10,9 +10,9 @@ spring:
         #dialect: org.hibernate.dialect.MySQLDialect
 
   datasource:
-    url: jdbc:mysql://localhost:3306/spring-library
+    url: jdbc:mysql://13.124.47.153:3306/spring_library
     username: root
-    password: age0504!
+    password: ivill0080@
     driver-class-name: com.mysql.cj.jdbc.Driver
     show-sql: true
     defer-datasource-initialization: true
