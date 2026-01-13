@@ -20,6 +20,7 @@ public class Member {
     private String email;
     private String phoneNumber;
 
+    // 생성자
     protected Member() {}
     private Member(String name, Long idNumber, String feature, String email, String phoneNumber) {
         this.name = name;
@@ -31,4 +32,5 @@ public class Member {
     public static Member of(String name, Long idNumber, String feature, String email, String phoneNumber) {
         return new Member(name, idNumber, feature, email, phoneNumber);
     }
+
 }

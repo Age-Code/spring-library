@@ -22,13 +22,13 @@ public class MemberDto {
     // Create Response DTO
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
     public static class CreateResDto {
-        Long id;
+        Long memberId;
     }
 
     // Detail Response DTO
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
     public static class DetailResDto {
-        Long id;
+        Long memberId;
         String name;
         Long idNumber;
         String feature;
@@ -37,7 +37,7 @@ public class MemberDto {
 
         public static DetailResDto toDetailResDto(Member member) {
             return builder()
-                    .id(member.getId())
+                    .memberId(member.getId())
                     .name(member.getName())
                     .idNumber(member.getIdNumber())
                     .feature(member.getFeature())
@@ -60,13 +60,13 @@ public class MemberDto {
     // Update Response DTO
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
     public static class UpdateResDto {
-        Long id;
+        Long memberId;
     }
 
     // Delete Response DTO
     @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
     public static class DeleteResDto {
-        Long id;
+        Long memberId;
     }
 
 }

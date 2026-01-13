@@ -19,7 +19,7 @@ public class MemberService {
     // 생성
     public MemberDto.CreateResDto create(MemberDto.CreateReqDto createReqDto) {
         Member member = memberRepository.save(createReqDto.toEntity());
-        return MemberDto.CreateResDto.builder().id(member.getId()).build();
+        return MemberDto.CreateResDto.builder().memberId(member.getId()).build();
     }
 
     // 전체 조회
@@ -29,16 +29,15 @@ public class MemberService {
     }
 
     // 조회
-    public MemberDto.DetailResDto findById(Long id) {
-        Member member = memberRepository.findById(id).orElseThrow();
+    public MemberDto.DetailResDto findById(Long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow();
         return MemberDto.DetailResDto.toDetailResDto(member);
     }
 
-
     // 수정
     @Transactional
-    public MemberDto.UpdateResDto update(Long id, MemberDto.UpdateReqDto updateReqDto) {
-        Member member = memberRepository.findById(id).orElseThrow();
+    public MemberDto.UpdateResDto update(Long memberId, MemberDto.UpdateReqDto updateReqDto) {
+        Member member = memberRepository.findById(memberId).orElseThrow();
 
         if(!updateReqDto.getName().isBlank()){
             member.setName(updateReqDto.getName());
@@ -56,13 +55,13 @@ public class MemberService {
             member.setPhoneNumber(updateReqDto.getPhoneNumber());
         }
 
-        return MemberDto.UpdateResDto.builder().id(member.getId()).build();
+        return MemberDto.UpdateResDto.builder().memberId(member.getId()).build();
     }
 
     // 삭제
-    public MemberDto.DeleteResDto delete(Long id) {
-        Member member = memberRepository.findById(id).orElseThrow();
+    public MemberDto.DeleteResDto delete(Long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow();
         memberRepository.delete(member);
-        return MemberDto.DeleteResDto.builder().id(member.getId()).build();
+        return MemberDto.DeleteResDto.builder().memberId(member.getId()).build();
     }
 }
