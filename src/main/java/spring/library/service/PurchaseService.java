@@ -49,7 +49,7 @@ public class PurchaseService {
         Member member = memberRepository.findById(updateReqDto.getMemberId()).orElseThrow();
         Purchase purchase = purchaseRepository.findByBookId(updateReqDto.getBookId()).orElseThrow();
 
-        if(!member.getFeature().equals("관리자")){
+        if(!member.getFeature().equals("관리자") || !purchase.getMember().equals(member)){
             return null;
         }
 
